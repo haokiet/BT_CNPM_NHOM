@@ -58,7 +58,8 @@ GO
 create table CTHoaDon(	SoHD varchar(10) references HoaDon(SoHD),
 						MaSP varchar(10) references SanPham(MaSP),
 						SoLuong int,
-						DonGia int)
+						DonGia int,
+						PRIMARY KEY(SoHD,MaSP))
 GO
 create table ThamSo(	MaTS varchar(10) primary key,
 						TenTS nvarchar(100) not null,
