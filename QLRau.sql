@@ -157,10 +157,10 @@ GO
 
 CREATE PROCEDURE SANPHAM_TimKiem
     @Masp varchar(10)=NULL,
-	@Tensp nvarchar(20)=NULL,
+	@Tensp nvarchar(50)=NULL,
 	@Donvitinh nvarchar(20) = null,
-	@NCC varchar(20) = null,
-	@loai nvarchar(20) =null,
+	@MaNCC nvarchar(10) = null,
+	@Maloai nvarchar(10) =null,
 	@GiaMin varchar(30) = null,
 	@GiaMax varchar(30) = null
 AS
@@ -184,22 +184,21 @@ IF @Donvitinh IS NOT NULL
        SELECT @SqlStr = @SqlStr + '
               AND (DonViTinh LIKE N''%'+@Donvitinh+'%'')
               '
-IF @NCC IS NOT NULL
-       SELECT @SqlStr = @SqlStr + '
-              AND (MaNCC LIKE ''%'+@NCC+'%'')
-              '
 IF @GiaMin IS NOT NULL and @GiaMax IS NOT NULL
        SELECT @SqlStr = @SqlStr + '
              AND (DonGia Between Convert(int,'''+@GiaMin+''') AND Convert(int, '''+@GiaMax+'''))
-             '
-IF @loai IS NOT NULL
+			 '
+IF @MaNCC IS NOT NULL
        SELECT @SqlStr = @SqlStr + '
-              AND (MaLoai LIKE ''%'+@loai+'%'')
+              AND (MaNCC LIKE ''%'+@MaNCC+'%'')
+              '
+IF @Maloai IS NOT NULL
+       SELECT @SqlStr = @SqlStr + '
+              AND (MaLoai LIKE ''%'+@Maloai+'%'')
               '
 
 	EXEC SP_EXECUTESQL @SqlStr
 END
-
 
 go
 

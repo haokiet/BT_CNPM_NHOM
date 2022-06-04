@@ -44,15 +44,14 @@ namespace BTNhom3_CNPM.Controllers
         }
    
         [HttpGet]
-        public ActionResult TimKiem_SanPham(string maSP = "", string TenSP = "", string DonViTinh = "")
+        public ActionResult TimKiem_SanPham(string maSP = "", string TenSP = "",string maNCC= "",string maLoai= "")
         {
            
             ViewBag.maSP = maSP;
             ViewBag.TenSP = TenSP;
-            ViewBag.DonViTinh = DonViTinh;
-           
-       
-            var sp = db.SanPhams.SqlQuery("SANPHAM_TimKiem'" + maSP + "',N'" + TenSP + "','"+ "',N'" + DonViTinh + "'");
+            ViewBag.MaNCC = new SelectList(db.NCCs, "MaNCC", "TenNCC");
+            ViewBag.MaLoai = new SelectList(db.Loais, "MaLoai", "TenLoai");
+            var sp = db.SanPhams.SqlQuery("SANPHAM_TimKiem'" + maSP + "',N'" + TenSP + "',N'" + maLoai + "',N'" + maNCC + "N'");
             if (sp.Count() == 0)
                 ViewBag.TB = "Không có thông tin tìm kiếm.";
             return View(sp.ToList());

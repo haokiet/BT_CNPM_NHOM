@@ -64,49 +64,56 @@
                                 @Html.AntiForgeryToken()
 
 
-                                <table class="table1" align="center">
-                                    <tr>
-                                        <td>
-                                            <div> Mã Sản Phẩm</div>
-                                        </td>
-                                        <td>
-                                            <input type="text" name="maSP" value="@ViewBag.maSP" />
-                                        </td>
+                            <table class="table1" align="center">
+                                <tr>
+                                    <td>
+                                        <div> Mã Sản Phẩm</div>
+                                    </td>
+                                    <td>
+                                        <input type="text" name="maSP" value="@ViewBag.maSP" />
+                                    </td>
 
-                                    </tr>
-                                    <tr>
-                                        <td>Tên Sản Phẩm</td>
-                                        <td>
-                                            <input type="text" name="TenSP" value="@ViewBag.TenSP" />
-                                        </td>
+                                </tr>
+                                <tr>
+                                    <td>Tên Sản Phẩm</td>
+                                    <td>
+                                        <input type="text" name="TenSP" value="@ViewBag.TenSP" />
+                                    </td>
 
-                                    </tr>
-                                    <tr>
-                                        <td>Giá Từ</td>
-                                        <td>
-                                            <input type="text" name="GiaMin" value="@ViewBag.GiaMin" />
-                                            Đến<input type="text" name="GiaMax" value="@ViewBag.GiaMax" />
-                                        </td>
+                                </tr>
+                                <tr>
+                                    <td>Giá Từ</td>
+                                    <td>
+                                        <input type="text" name="GiaMin" value="@ViewBag.GiaMin" />
+                                        Đến<input type="text" name="GiaMax" value="@ViewBag.GiaMax" />
+                                    </td>
 
-                                    </tr>
-                                    <tr>
-                                        <td>Đơn Vị Tính</td>
-                                        <td>
-                                            <input type="text" name="DonViTinh" value="@ViewBag.DonViTinh" />
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td></td>
-                                        <td>
-                                            <input type="submit" name="submit" value="Tìm kiếm" style="margin-left: 5px;width:100px;
+                                </tr>
+                                <tr>
+                                    <td>Nhà Cung Cấp</td>
+                                    <td>
+                                        @Html.DropDownList("MaNCC", null, "Tất cả", htmlAttributes: new { @class = "form-control" })
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Loại</td>
+                                    <td>
+                                        @Html.DropDownList("MaLoai", null, "Tất cả", htmlAttributes: new { @class = "form-control" })
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>
+                                        <input type="submit" name="submit" value="Tìm kiếm" style="margin-left: 5px;width:100px;
                 background-color: blue;color:white" />
-                                            <input type="button" name="Nhapmoi" value="Nhập mới" style="margin-left: 5px;width:100px;
+                                        <input type="button" name="Nhapmoi" value="Nhập mới" style="margin-left: 5px;width:100px;
                 background-color: blue;color:white" onclick="location.href='@Url.Action("TimKiem_SanPham", "SanPhams/TimKiem_SanPham")'" />
 
-                                        </td>
-                                    </tr>
-                                </table>
+                                    </td>
+
+                                </tr>
+
+                            </table>
                             }
                         </div>
                         <div id="gridContent">
