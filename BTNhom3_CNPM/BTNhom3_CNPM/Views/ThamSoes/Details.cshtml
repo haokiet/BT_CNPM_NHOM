@@ -1,0 +1,58 @@
+﻿@model BTNhom3_CNPM.Models.ThamSo
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>ThamSo</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.TenTS)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.TenTS)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.DonViTinh)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.DonViTinh)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.GiaTri)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.GiaTri)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.TinhTrang)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.TinhTrang)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.MaTS }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>

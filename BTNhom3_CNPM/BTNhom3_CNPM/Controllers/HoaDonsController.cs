@@ -13,7 +13,11 @@ namespace BTNhom3_CNPM.Controllers
     public class HoaDonsController : Controller
     {
         private QLRauEntities db = new QLRauEntities();
-
+        public ActionResult XuatHoaDon()
+        {
+            var hoaDons = db.HoaDons.Include(h => h.KhachHang).Include(h => h.NhanVien).Include(h => h.NhanVien1);
+            return View(hoaDons.ToList());
+        }
         // GET: HoaDons
         public ActionResult Index()
         {

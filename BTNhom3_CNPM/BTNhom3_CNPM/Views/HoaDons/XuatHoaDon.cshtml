@@ -1,0 +1,218 @@
+﻿@model IEnumerable<BTNhom3_CNPM.Models.HoaDon>
+@{ 
+    Layout = "~/Views/Shared/Layout_Admin.cshtml";
+}
+<!DOCTYPE html>
+<main id="main" class="main">
+    <div class="pagetitle">
+        <h1>Thống Kê</h1>
+    </div><!-- End Page Title -->
+    <section class="section">
+        <div class="row">
+            <div class="col-lg-12">
+
+                <div class="card">
+                    <div class="card-body">
+                        <div>
+                            <meta charset="UTF-8">
+                            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+                            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                            <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
+                            <link rel="stylesheet" href="https://cdn.datatables.net/datetime/1.1.2/css/dataTables.dateTime.min.css">
+
+                            <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.2.3/css/buttons.dataTables.min.css">
+
+                            <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+                            <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+
+                            <script src="https://cdn.datatables.net/buttons/2.2.3/js/dataTables.buttons.min.js"></script>
+                            <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+                            <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+                            <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+                            <script src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.html5.min.js"></script>
+                            <script src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.print.min.js"></script>
+                            <script src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.colVis.min.js"></script>
+
+                            <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.2/moment.min.js"></script>
+                            <script src="https://cdn.datatables.net/datetime/1.1.2/js/dataTables.dateTime.min.js"></script>
+                            <script src="https://cdn.datatables.net/select/1.4.0/js/dataTables.select.min.js"></script>
+
+                            <script>
+                                var minDate, maxDate;
+
+                                $.fn.dataTable.ext.search.push(
+                                    function (settings, data, dataIndex) {
+                                        var min = minDate.val();
+                                        var max = maxDate.val();
+                                        var date = new Date(data[6, 7]);
+
+                                        if (
+                                            (min === null && max === null) ||
+                                            (min === null && date <= max) ||
+                                            (min <= date && max === null) ||
+                                            (min <= date && date <= max)
+                                        ) {
+                                            return true;
+                                        }
+                                        return false;
+                                    }
+                                );
+
+                                $(document).ready(function () {
+                                    minDate = new DateTime($('#min'), {
+                                        i18n: {
+                                            months: ['Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5', 'Tháng 6', 'Tháng 7', 'Tháng 8', 'Tháng 9', 'Tháng 10', 'Tháng 11', 'Tháng 12'],
+                                            weekdays: ['C.Nhật', 'Thứ 2', 'Thứ 3', 'Thứ 4', 'Thứ 5', 'Thứ 6', 'Thứ 7']
+                                        },
+                                        buttons: {
+                                            today: true,
+                                            clear: true
+                                        },
+                                        format: 'YYYY-MM-DD'
+                                    });
+                                    maxDate = new DateTime($('#max'), {
+                                        i18n: {
+                                            months: ['Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5', 'Tháng 6', 'Tháng 7', 'Tháng 8', 'Tháng 9', 'Tháng 10', 'Tháng 11', 'Tháng 12'],
+                                            weekdays: ['C.Nhật', 'Thứ 2', 'Thứ 3', 'Thứ 4', 'Thứ 5', 'Thứ 6', 'Thứ 7']
+                                        },
+                                        buttons: {
+                                            today: true,
+                                            clear: true
+                                        },
+                                        format: 'YYYY-MM-DD'
+                                    });
+
+                                    var table = $('#example').DataTable({
+                                        "language": {
+                                            "lengthMenu": "Hiển thị MENU dòng trên một trang",
+                                            "zeroRecords": "Không tìm thấy",
+                                            "info": "Hiển thị trang PAGE / PAGES",
+                                            "infoEmpty": "Không có dữ liệu",
+                                            "infoFiltered": "(Được lọc từ MAX mục)",
+                                            "search": "Tìm kiếm:",
+                                            "paginate": {
+                                                "first": "Trang đầu",
+                                                "last": "Trang cuối",
+                                                "next": "Sau",
+                                                "previous": "Trước",
+                                            },
+                                            buttons: {
+                                                colvis: 'Chọn mục không xuất',
+                                            },
+                                            select: {
+                                                rows: " (%d dòng được chọn)"
+                                            }
+                                        },
+                                        dom: 'Bfrtip',
+
+                                        buttons: [
+                                            {
+                                                extend: 'print',
+                                                exportOptions: {
+                                                    columns: ':visible'
+                                                }
+                                            },
+                                            {
+                                                extend: 'csvHtml5',
+                                                exportOptions: {
+                                                    columns: ':visible'
+                                                }
+                                            },
+                                            {
+                                                extend: 'copyHtml5',
+                                                exportOptions: {
+                                                    columns: ':visible'
+                                                }
+                                            },
+                                            {
+                                                extend: 'excelHtml5',
+                                                exportOptions: {
+                                                    columns: ':visible'
+                                                }
+                                            },
+                                            {
+                                                extend: 'pdfHtml5',
+                                                exportOptions: {
+                                                    columns: ':visible'
+                                                }
+                                            },
+                                            'colvis'
+                                        ],
+                                        select: true
+                                    });
+
+                                    $('#min, #max').on('change', function () {
+                                        table.draw();
+                                    });
+                                });
+                            </script>
+
+                        </div>
+
+
+                        <table border="0" cellspacing="5" cellpadding="5">
+                            <tbody>
+                                <tr>
+                                    <td>Ngày bắt đầu:</td>
+                                    <td><input type="text" id="min" name="min"></td>
+                                </tr>
+                                <tr>
+                                    <td>Ngày cuối:</td>
+                                    <td><input type="text" id="max" name="max"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table class="display nowrap" style="width:100%" id="example">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th>Số hóa đơn</th>
+                                    <th>Mã khách hàng</th>
+                                    <th>Mã nhân viên duyệt</th>
+                                    <th>Mã nhân viên giao hàng</th>
+                                    <th>Địa chỉ giao hàng</th>
+                                    <th>Tình trạng</th>
+                                    <th>Ngày đặt hàng</th>
+                                    <th>Ngày giao hàng</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.SoHD)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.MaKH)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.MaNVDuyet)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.MaNVGiaoHang)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.DiaChiGiaoHang)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.TinhTrang)
+                                        </td>
+                                        <td>
+                                            @Convert.ToDateTime(item.NgayDatHang).ToString("yyyy-MM-dd")
+                                        </td>
+                                        <td>
+                                            @Convert.ToDateTime(item.NgayGiaoHang).ToString("yyyy-MM-dd")
+                                        </td>
+
+
+                                    </tr>
+                                }
+                            </tbody>
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>

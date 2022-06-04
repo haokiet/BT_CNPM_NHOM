@@ -131,6 +131,9 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HoaDonsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\NhanViensController.cs" />
+    <Compile Include="Controllers\SanPhamsController.cs" />
+    <Compile Include="Controllers\ThamSoesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -233,9 +236,29 @@
     <Content Include="Views\HoaDons\Details.cshtml" />
     <Content Include="Views\HoaDons\Edit.cshtml" />
     <Content Include="Views\HoaDons\Index.cshtml" />
+    <Content Include="Views\HoaDons\XuatHoaDon.cshtml" />
+    <Content Include="Views\SanPhams\Create.cshtml" />
+    <Content Include="Views\SanPhams\Delete.cshtml" />
+    <Content Include="Views\SanPhams\Details.cshtml" />
+    <Content Include="Views\SanPhams\Edit.cshtml" />
+    <Content Include="Views\SanPhams\Index.cshtml" />
+    <Content Include="Views\NhanViens\Create.cshtml" />
+    <Content Include="Views\NhanViens\Delete.cshtml" />
+    <Content Include="Views\NhanViens\Details.cshtml" />
+    <Content Include="Views\NhanViens\Edit.cshtml" />
+    <Content Include="Views\NhanViens\Index.cshtml" />
+    <Content Include="Views\ThamSoes\Create.cshtml" />
+    <Content Include="Views\ThamSoes\Delete.cshtml" />
+    <Content Include="Views\ThamSoes\Details.cshtml" />
+    <Content Include="Views\ThamSoes\Edit.cshtml" />
+    <Content Include="Views\ThamSoes\Index.cshtml" />
+    <Content Include="Views\SanPhams\TimKiem_SanPham.cshtml" />
+    <Content Include="Views\Shared\Layout_Admin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="assets\" />
+    <Folder Include="Images\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
