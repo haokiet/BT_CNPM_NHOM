@@ -62,12 +62,7 @@
 
                 <div class="card">
                     <div class="card-body">
-                        <button>
-                            @Html.ActionLink("Thêm Mới", "Create")
-                        </button>
-                        <button>
-                            @Html.ActionLink("Tìm Kiếm", "TimKiem_SanPham")
-                        </button>
+
                         <div id="gridContent">
                             <i id="tb">@ViewBag.TB</i>
                             @grid.GetHtml(
@@ -85,16 +80,19 @@
                             grid.Column("Loai.TenLoai","Loại"),
                             grid.Column("DonGia","Đơn Giá"),
                             grid.Column("Chức Năng",format: @<text> <a style="margin-left:50px" href="@Url.Action("Details",new { id = item.MaSP})" class="edit-btn"><abbr title="Xem chi tiết"><img src="/images/details.png" width="20" height="20" /></abbr></a>|
-                                                                    <a style="margin-left:50px" href="@Url.Action("Details",new { id = item.MaSP})" class="edit-btn"><abbr title="Sửa"><img src="/images/edit.png" width="20" height="20" /></abbr></a>|
-                                                                    <a style="margin-left:50px" href="@Url.Action("Details",new { id = item.MaSP})" class="edit-btn"><abbr title="Xóa"><img src="/images/delete.png" width="20" height="20" /></abbr></a>
-                                                            </text>),
+                        <a style="margin-left:50px" href="@Url.Action("Details",new { id = item.MaSP})" class="edit-btn"><abbr title="Sửa"><img src="/images/edit.png" width="20" height="20" /></abbr></a>|
+                        <a style="margin-left:50px" href="@Url.Action("Details",new { id = item.MaSP})" class="edit-btn"><abbr title="Xóa"><img src="/images/delete.png" width="20" height="20" /></abbr></a>
+                            </text>),
 
 
 }
 )
                         </div>
                         <button>
-                            @Html.ActionLink("Quay lại", "Index")
+                            @Html.ActionLink("Thêm Mới", "Create")
+                        </button>
+                        <button>
+                            @Html.ActionLink("Tìm Kiếm", "TimKiem_SanPham")
                         </button>
                     </div>
                 </div>
