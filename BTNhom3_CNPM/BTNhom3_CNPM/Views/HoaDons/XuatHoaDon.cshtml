@@ -166,9 +166,9 @@
                             <thead class="thead-dark">
                                 <tr>
                                     <th>Số hóa đơn</th>
-                                    <th>Mã khách hàng</th>
-                                    <th>Mã nhân viên duyệt</th>
-                                    <th>Mã nhân viên giao hàng</th>
+                                    <th>Tên khách hàng</th>
+                                    <th>Tên nhân viên duyệt</th>
+                                    <th>Tên nhân viên giao hàng</th>
                                     <th>Địa chỉ giao hàng</th>
                                     <th>Tình trạng</th>
                                     <th>Ngày đặt hàng</th>
@@ -183,13 +183,13 @@
                                             @Html.DisplayFor(modelItem => item.SoHD)
                                         </td>
                                         <td>
-                                            @Html.DisplayFor(modelItem => item.MaKH)
+                                            @Html.DisplayFor(modelItem => item.KhachHang.TenKH)
                                         </td>
                                         <td>
-                                            @Html.DisplayFor(modelItem => item.MaNVDuyet)
+                                            @Html.DisplayFor(modelItem => item.NhanVien.TenNV)
                                         </td>
                                         <td>
-                                            @Html.DisplayFor(modelItem => item.MaNVGiaoHang)
+                                            @Html.DisplayFor(modelItem => item.NhanVien1.TenNV)
                                         </td>
                                         <td>
                                             @Html.DisplayFor(modelItem => item.DiaChiGiaoHang)

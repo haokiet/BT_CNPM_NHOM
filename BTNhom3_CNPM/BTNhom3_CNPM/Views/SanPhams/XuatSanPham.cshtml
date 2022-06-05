@@ -102,8 +102,8 @@
                             <thead class="thead-dark">
                                 <tr>
                                     <th>Mã sản phẩm</th>
-                                    <th>Mã nhà cung cấp</th>
-                                    <th>Mã loại</th>
+                                    <th>Tên nhà cung cấp</th>
+                                    <th>Tên loại</th>
                                     <th>Tên sản phẩm</th>
                                     <th>Mô tả sản phẩm</th>
                                     <th>Ảnh đại diện</th>
@@ -119,10 +119,10 @@
                                             @Html.DisplayFor(modelItem => item.MaSP)
                                         </td>
                                         <td>
-                                            @Html.DisplayFor(modelItem => item.MaNCC)
+                                            @Html.DisplayFor(modelItem => item.NCC.TenNCC)
                                         </td>
                                         <td>
-                                            @Html.DisplayFor(modelItem => item.MaLoai)
+                                            @Html.DisplayFor(modelItem => item.Loai.TenLoai)
                                         </td>
                                         <td>
                                             @Html.DisplayFor(modelItem => item.TenSP)

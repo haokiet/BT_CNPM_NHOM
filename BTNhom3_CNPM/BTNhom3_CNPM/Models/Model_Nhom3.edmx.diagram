@@ -5,14 +5,14 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="326d01507dec4b6496a17584b19042ce" Name="Diagram1">
-        <EntityTypeShape EntityType="QLRauModel.CTHoaDon" Width="1.5" PointX="5.25" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLRauModel.CTHoaDon" Width="1.5" PointX="3.625" PointY="5.125" IsExpanded="true" />
         <EntityTypeShape EntityType="QLRauModel.HoaDon" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLRauModel.KhachHang" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLRauModel.KhachHang" Width="1.5" PointX="5.625" PointY="1.375" IsExpanded="true" />
         <EntityTypeShape EntityType="QLRauModel.Loai" Width="1.5" PointX="0.75" PointY="9.625" IsExpanded="true" />
         <EntityTypeShape EntityType="QLRauModel.NCC" Width="1.5" PointX="0.75" PointY="12" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLRauModel.NhanVien" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLRauModel.NhanVien" Width="1.5" PointX="0.75" PointY="0.875" IsExpanded="true" />
         <EntityTypeShape EntityType="QLRauModel.SanPham" Width="1.5" PointX="3" PointY="10.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLRauModel.ThamSo" Width="1.5" PointX="2.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLRauModel.ThamSo" Width="1.5" PointX="6.375" PointY="6.125" IsExpanded="true" />
         <AssociationConnector Association="QLRauModel.FK__CTHoaDon__MaSP__4AB81AF0" ManuallyRouted="false" />
         <AssociationConnector Association="QLRauModel.FK__CTHoaDon__SoHD__49C3F6B7" ManuallyRouted="false" />
         <AssociationConnector Association="QLRauModel.FK__HoaDon__MaKH__412EB0B6" ManuallyRouted="false" />
