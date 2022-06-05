@@ -49,7 +49,7 @@ namespace BTNhom3_CNPM.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("NHANVIEN_TimKiem", manvParameter, tennvParameter);
         }
     
-        public virtual int SANPHAM_TimKiem(string masp, string tensp, string donvitinh, string nCC, string loai, string giaMin, string giaMax)
+        public virtual int SANPHAM_TimKiem(string masp, string tensp, string donvitinh, string maNCC, string maloai, string giaMin, string giaMax)
         {
             var maspParameter = masp != null ?
                 new ObjectParameter("Masp", masp) :
@@ -63,13 +63,13 @@ namespace BTNhom3_CNPM.Models
                 new ObjectParameter("Donvitinh", donvitinh) :
                 new ObjectParameter("Donvitinh", typeof(string));
     
-            var nCCParameter = nCC != null ?
-                new ObjectParameter("NCC", nCC) :
-                new ObjectParameter("NCC", typeof(string));
+            var maNCCParameter = maNCC != null ?
+                new ObjectParameter("MaNCC", maNCC) :
+                new ObjectParameter("MaNCC", typeof(string));
     
-            var loaiParameter = loai != null ?
-                new ObjectParameter("loai", loai) :
-                new ObjectParameter("loai", typeof(string));
+            var maloaiParameter = maloai != null ?
+                new ObjectParameter("Maloai", maloai) :
+                new ObjectParameter("Maloai", typeof(string));
     
             var giaMinParameter = giaMin != null ?
                 new ObjectParameter("GiaMin", giaMin) :
@@ -79,7 +79,7 @@ namespace BTNhom3_CNPM.Models
                 new ObjectParameter("GiaMax", giaMax) :
                 new ObjectParameter("GiaMax", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SANPHAM_TimKiem", maspParameter, tenspParameter, donvitinhParameter, nCCParameter, loaiParameter, giaMinParameter, giaMaxParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SANPHAM_TimKiem", maspParameter, tenspParameter, donvitinhParameter, maNCCParameter, maloaiParameter, giaMinParameter, giaMaxParameter);
         }
     }
 }

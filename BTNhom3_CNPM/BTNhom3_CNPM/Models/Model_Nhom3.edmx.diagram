@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="0cc4b364a9004b299aba8f6e0b102d80" Name="Diagram1">
+      <Diagram DiagramId="326d01507dec4b6496a17584b19042ce" Name="Diagram1">
         <EntityTypeShape EntityType="QLRauModel.CTHoaDon" Width="1.5" PointX="5.25" PointY="1.625" IsExpanded="true" />
         <EntityTypeShape EntityType="QLRauModel.HoaDon" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
         <EntityTypeShape EntityType="QLRauModel.KhachHang" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
@@ -13,13 +13,13 @@
         <EntityTypeShape EntityType="QLRauModel.NhanVien" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="QLRauModel.SanPham" Width="1.5" PointX="3" PointY="10.375" IsExpanded="true" />
         <EntityTypeShape EntityType="QLRauModel.ThamSo" Width="1.5" PointX="2.75" PointY="5.75" IsExpanded="true" />
-        <AssociationConnector Association="QLRauModel.FK__CTHoaDon__MaSP__37A5467C" ManuallyRouted="false" />
-        <AssociationConnector Association="QLRauModel.FK__CTHoaDon__SoHD__36B12243" ManuallyRouted="false" />
-        <AssociationConnector Association="QLRauModel.FK__HoaDon__MaKH__2E1BDC42" ManuallyRouted="false" />
-        <AssociationConnector Association="QLRauModel.FK__HoaDon__MaNVDuye__2F10007B" ManuallyRouted="false" />
-        <AssociationConnector Association="QLRauModel.FK__HoaDon__MaNVGiao__300424B4" ManuallyRouted="false" />
-        <AssociationConnector Association="QLRauModel.FK__SanPham__MaLoai__33D4B598" ManuallyRouted="false" />
-        <AssociationConnector Association="QLRauModel.FK__SanPham__MaNCC__32E0915F" ManuallyRouted="false" />
+        <AssociationConnector Association="QLRauModel.FK__CTHoaDon__MaSP__4AB81AF0" ManuallyRouted="false" />
+        <AssociationConnector Association="QLRauModel.FK__CTHoaDon__SoHD__49C3F6B7" ManuallyRouted="false" />
+        <AssociationConnector Association="QLRauModel.FK__HoaDon__MaKH__412EB0B6" ManuallyRouted="false" />
+        <AssociationConnector Association="QLRauModel.FK__HoaDon__MaNVDuye__4222D4EF" ManuallyRouted="false" />
+        <AssociationConnector Association="QLRauModel.FK__HoaDon__MaNVGiao__4316F928" ManuallyRouted="false" />
+        <AssociationConnector Association="QLRauModel.FK__SanPham__MaLoai__46E78A0C" ManuallyRouted="false" />
+        <AssociationConnector Association="QLRauModel.FK__SanPham__MaNCC__45F365D3" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

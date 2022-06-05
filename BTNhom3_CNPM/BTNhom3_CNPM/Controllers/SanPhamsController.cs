@@ -15,6 +15,12 @@ namespace BTNhom3_CNPM.Controllers
         private QLRauEntities db = new QLRauEntities();
 
         // GET: SanPhams
+        public ActionResult XuatSanPham()
+        {
+            var sanPhams = db.SanPhams.Include(s => s.Loai).Include(s => s.NCC);
+            return View(sanPhams.ToList());
+        }
+
         public ActionResult Index()
         {
             var sanPhams = db.SanPhams.Include(s => s.Loai).Include(s => s.NCC);
