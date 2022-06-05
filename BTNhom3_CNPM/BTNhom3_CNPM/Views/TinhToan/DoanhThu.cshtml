@@ -1,0 +1,97 @@
+﻿
+@{
+    ViewBag.Title = "DoanhThu";
+    Layout = "~/Views/Shared/Layout_Admin.cshtml";
+}
+
+
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<main id="main" class="main">
+    <div class="pagetitle">
+        <h1>Thống Kê</h1>
+    </div><!-- End Page Title -->
+    <section class="section">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+
+                        <div class="content-wrapper" style="text-align:center">
+                            <br />
+                            <div class="row" style="text-align:center; margin-left: 300px">
+                                <div class="col-xl-3 col-md-6 mb-4">
+                                    <div class="card border-left-danger shadow h-100 py-2">
+                                        <div class="card-body">
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col mr-2">
+                                                    <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
+                                                        Doanh thu trong tháng
+                                                    </div>
+                                                    <div class="h5 mb-0 font-weight-bold text-gray-800">@ViewBag.DoanhThuThang.ToString("#,#") VNĐ</div>
+                                                </div>
+                                                <div class="col-auto">
+                                                    <i class="fa fa-dollar-sign fa-2x text-gray-300"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-xl-3 col-md-6 mb-4">
+                                    <div class="card border-left-success shadow h-100 py-2">
+                                        <div class="card-body">
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col mr-2">
+                                                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                                        Doanh thu trong ngày
+                                                    </div>
+                                                    <div class="h5 mb-0 font-weight-bold text-gray-800">@ViewBag.DoanhThuNgay.ToString("#,#") VNĐ</div>
+                                                </div>
+                                                <div class="col-auto">
+                                                    <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-xl-3 col-md-6 mb-4">
+                                    <div class="card border-left-warning shadow h-100 py-2">
+                                        <div class="card-body">
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col mr-2">
+                                                    <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                                        Số đơn hàng trong ngày
+                                                    </div>
+                                                    <div class="h5 mb-0 font-weight-bold text-gray-800">@ViewBag.HoaDonNgay</div>
+                                                </div>
+                                                <div class="col-auto">
+                                                    <i class="fas fa-clipboard fa-2x text-gray-300"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+
+

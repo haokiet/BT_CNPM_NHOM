@@ -23,11 +23,12 @@
     <Property Name="DiaChiGiaoHang" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="TinhTrang" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="NgayDatHang" Type="DateTime" Nullable="false" Precision="0" />
-    <Property Name="NgayGiaoHang" Type="DateTime" Precision="0" />
+    <Property Name="NgayGiaoHang" Type="DateTime" Precision="0" Nullable="false" />
     <NavigationProperty Name="CTHoaDons" Relationship="Self.FK__CTHoaDon__SoHD__49C3F6B7" FromRole="HoaDon" ToRole="CTHoaDon" />
     <NavigationProperty Name="KhachHang" Relationship="Self.FK__HoaDon__MaKH__412EB0B6" FromRole="HoaDon" ToRole="KhachHang" />
     <NavigationProperty Name="NhanVien" Relationship="Self.FK__HoaDon__MaNVDuye__4222D4EF" FromRole="HoaDon" ToRole="NhanVien" />
     <NavigationProperty Name="NhanVien1" Relationship="Self.FK__HoaDon__MaNVGiao__4316F928" FromRole="HoaDon" ToRole="NhanVien" />
+    <Property Name="ThanhToan" Type="Double" />
   </EntityType>
   <EntityType Name="KhachHang">
     <Key>

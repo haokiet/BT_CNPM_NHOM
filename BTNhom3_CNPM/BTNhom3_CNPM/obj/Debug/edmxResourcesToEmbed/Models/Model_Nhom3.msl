@@ -14,6 +14,7 @@
     <EntitySetMapping Name="HoaDons">
       <EntityTypeMapping TypeName="QLRauModel.HoaDon">
         <MappingFragment StoreEntitySet="HoaDon">
+          <ScalarProperty Name="ThanhToan" ColumnName="ThanhToan" />
           <ScalarProperty Name="SoHD" ColumnName="SoHD" />
           <ScalarProperty Name="MaKH" ColumnName="MaKH" />
           <ScalarProperty Name="MaNVDuyet" ColumnName="MaNVDuyet" />
