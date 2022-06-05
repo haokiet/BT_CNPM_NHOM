@@ -42,7 +42,8 @@ create table HoaDon(	SoHD varchar(10) primary key,
 						DiaChiGiaoHang nvarchar(100) not null,
 						TinhTrang nvarchar(20) not null,
 						NgayDatHang date not null,
-						NgayGiaoHang date)
+						NgayGiaoHang date not null,
+						ThanhToan float)
 
 GO
 create table SanPham(	MaSP varchar(10) primary key,
@@ -122,17 +123,19 @@ VALUES	('KH001', N'huynguyen','123', N'Nguyễn', N'Huy',  0985101312, N'Cam Ran
 		('KH009', N'hoaitran','123', N'Trần', N'Hoài',  0985231312, N'Nha Trang, Khánh Hòa', 1),
 		('KH010', N'thupham','123', N'Phạm', N'Thu', 0985441312, N'Cam Lâm, Khánh Hòa',  0)
 GO
-INSERT INTO dbo.HoaDon (SoHD , NgayDatHang, NgayGiaoHang, DiaChiGiaoHang,  TinhTrang, MaNVDuyet, MaNVGiaoHang, MaKH)
-VALUES	('HD001', CAST(N'2020-09-03' AS Date), CAST(N'2020-09-04' AS Date), N'Vĩnh Điềm Trung', N'Duyệt','NV01', 'NV01','KH001'),
-		('HD002', CAST(N'2020-10-02' AS Date), CAST(N'2020-10-03' AS Date),  N'Mã Vòng',  N'Duyệt', 'NV03','NV01','KH002'),
-		('HD003', CAST(N'2020-04-10' AS Date), CAST(N'2020-04-11' AS Date),	N'Vĩnh Điềm Trung', N'Duyệt','NV01', 'NV01','KH003'),
-		('HD004', CAST(N'2020-09-11' AS Date), CAST(N'2020-09-12' AS Date),  N'Vĩnh Hải', N'Duyệt', 'NV02','NV01', 'KH004'),
-		('HD005', CAST(N'2020-04-06' AS Date), CAST(N'2020-04-07' AS Date),  N'Vĩnh Phước',  N'Duyệt', 'NV08','NV01', 'KH005'),
-		('HD006', CAST(N'2020-11-20' AS Date), CAST(N'2020-11-21' AS Date),  N'Xóm Cồn', N'Duyệt', 'NV05','NV01', 'KH006'),
-		('HD007', CAST(N'2020-10-11' AS Date), CAST(N'2020-10-12' AS Date),  N'Vĩnh Hải',  N'Duyệt', 'NV10','NV01', 'KH007'),
-		('HD008', CAST(N'2020-02-01' AS Date), CAST(N'2020-02-02' AS Date),  N'Vĩnh Phước',  N'Duyệt', 'NV04','NV01', 'KH008'),
-		('HD009', CAST(N'2020-01-03' AS Date), CAST(N'2020-01-04' AS Date), N'Mường Thanh',  N'Duyệt', 'NV09', 'NV01','KH009'),
-		('HD010', CAST(N'2020-11-09' AS Date), CAST(N'2020-11-10' AS Date),  N'Vĩnh Điềm Trung',  N'Duyệt', 'NV01','NV03', 'KH001')
+INSERT INTO dbo.HoaDon (SoHD , NgayDatHang, NgayGiaoHang, DiaChiGiaoHang,  TinhTrang, MaNVDuyet, MaNVGiaoHang, MaKH, ThanhToan)
+VALUES	('HD001', CAST(N'2020-09-03' AS Date), CAST(N'2020-09-04' AS Date), N'Vĩnh Điềm Trung', N'Duyệt','NV01', 'NV01','KH001',10.0),
+		('HD002', CAST(N'2020-10-02' AS Date), CAST(N'2020-10-03' AS Date),  N'Mã Vòng',  N'Duyệt', 'NV03','NV01','KH002',10.0),
+		('HD003', CAST(N'2020-04-10' AS Date), CAST(N'2020-04-11' AS Date),	N'Vĩnh Điềm Trung', N'Duyệt','NV01', 'NV01','KH003',10.0),
+		('HD004', CAST(N'2020-09-11' AS Date), CAST(N'2020-09-12' AS Date),  N'Vĩnh Hải', N'Duyệt', 'NV02','NV01', 'KH004',10.0),
+		('HD005', CAST(N'2020-04-06' AS Date), CAST(N'2020-04-07' AS Date),  N'Vĩnh Phước',  N'Duyệt', 'NV08','NV01', 'KH005',10.0),
+		('HD006', CAST(N'2020-11-20' AS Date), CAST(N'2020-11-21' AS Date),  N'Xóm Cồn', N'Duyệt', 'NV05','NV01', 'KH006',10.0),
+		('HD007', CAST(N'2020-10-11' AS Date), CAST(N'2020-10-12' AS Date),  N'Vĩnh Hải',  N'Duyệt', 'NV10','NV01', 'KH007',10.0),
+		('HD008', CAST(N'2020-02-01' AS Date), CAST(N'2020-02-02' AS Date),  N'Vĩnh Phước',  N'Duyệt', 'NV04','NV01', 'KH008',10.0),
+		('HD009', CAST(N'2020-01-03' AS Date), CAST(N'2020-01-04' AS Date), N'Mường Thanh',  N'Duyệt', 'NV09', 'NV01','KH009',10.0),
+		('HD010', CAST(N'2020-11-09' AS Date), CAST(N'2020-11-10' AS Date),  N'Vĩnh Điềm Trung',  N'Duyệt', 'NV01','NV03', 'KH001',10.0),
+		('HD011', CAST(N'2022-06-06' AS Date), CAST(N'2022-06-09' AS Date),  N'Vĩnh Điềm Trung',  N'Duyệt', 'NV04','NV01', 'KH003',10.0),
+		('HD012', CAST(N'2022-06-05' AS Date), CAST(N'2022-06-11' AS Date),  N'Vĩnh Điềm Trung',  N'Duyệt', 'NV05','NV01', 'KH002',10.0)
 GO
 
 
@@ -152,7 +155,6 @@ VALUES	(15000, 15, 'HD001', 'SP01'),
 		(9000, 5, 'HD003', 'SP03'),
 		(9000, 10, 'HD004', 'SP04'),
 		(3000, 10, 'HD005', 'SP05')
-
 GO
 
 CREATE PROCEDURE SANPHAM_TimKiem
