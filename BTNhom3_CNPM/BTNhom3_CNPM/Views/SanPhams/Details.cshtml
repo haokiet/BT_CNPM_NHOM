@@ -54,8 +54,10 @@
                             </tr>
                         </table>
                         <p style="margin-left:50px;">
-                            <button>@Html.ActionLink("Cập nhật", "Edit", new { id = Model.MaSP }) |</button>
+                            <button>@Html.ActionLink("Cập nhật", "Edit", new { id = Model.MaSP })</button>
+                            <button>@Html.ActionLink("Xóa", "Delete", new { id = Model.MaSP })</button>
                             <button>@Html.ActionLink("Quay lại", "Index")</button>
+
                         </p>
                         </div>
                     </div>

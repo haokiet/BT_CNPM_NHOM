@@ -80,8 +80,8 @@
                             grid.Column("Loai.TenLoai","Loại"),
                             grid.Column("DonGia","Đơn Giá"),
                             grid.Column("Chức Năng",format: @<text> <a style="margin-left:50px" href="@Url.Action("Details",new { id = item.MaSP})" class="edit-btn"><abbr title="Xem chi tiết"><img src="/images/details.png" width="20" height="20" /></abbr></a>|
-                        <a style="margin-left:50px" href="@Url.Action("Details",new { id = item.MaSP})" class="edit-btn"><abbr title="Sửa"><img src="/images/edit.png" width="20" height="20" /></abbr></a>|
-                        <a style="margin-left:50px" href="@Url.Action("Details",new { id = item.MaSP})" class="edit-btn"><abbr title="Xóa"><img src="/images/delete.png" width="20" height="20" /></abbr></a>
+                        <a style="margin-left:50px" href="@Url.Action("Edit",new { id = item.MaSP})" class="edit-btn"><abbr title="Sửa"><img src="/images/edit.png" width="20" height="20" /></abbr></a>|
+                        <a style="margin-left:50px" href="@Url.Action("Delete",new { id = item.MaSP})" class="edit-btn"><abbr title="Xóa"><img src="/images/delete.png" width="20" height="20" /></abbr></a>
                             </text>),
 
 

@@ -45,7 +45,7 @@ namespace BTNhom3_CNPM.Controllers
         {
             var maMax = db.SanPhams.ToList().Select(n => n.MaSP).Max();
             int maSP = int.Parse(maMax.Substring(2)) + 1;
-            string SP = String.Concat("000", maSP.ToString());
+            string SP = String.Concat("00", maSP.ToString());
             return "SP" + SP.Substring(maSP.ToString().Length - 1);
         }
    
@@ -65,7 +65,7 @@ namespace BTNhom3_CNPM.Controllers
         // GET: SanPhams/Create
         public ActionResult Create()
         {
-            ViewBag.MaNV = LayMaSP();
+            ViewBag.MaSP = LayMaSP();
             ViewBag.MaLoai = new SelectList(db.Loais, "MaLoai", "TenLoai");
             ViewBag.MaNCC = new SelectList(db.NCCs, "MaNCC", "TenNCC");
             return View();
@@ -78,8 +78,17 @@ namespace BTNhom3_CNPM.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "MaSP,MaNCC,MaLoai,TenSP,MoTaSP,AnhDaiDien,DonGia,DonViTinh")] SanPham sanPham)
         {
+            //System.Web.HttpPostedFileBase Avatar;
+            var imgNV = Request.Files["Avatar"];
+            //Lấy thông tin từ input type=file có tên Avatar
+            string postedFileName = System.IO.Path.GetFileName(imgNV.FileName);
+            //Lưu hình đại diện về Server
+            var path = Server.MapPath("/Images/" + postedFileName);
+            imgNV.SaveAs(path);
             if (ModelState.IsValid)
             {
+                sanPham.MaSP=LayMaSP();
+                sanPham.AnhDaiDien = postedFileName;
                 db.SanPhams.Add(sanPham);
                 db.SaveChanges();
                 return RedirectToAction("Index");
