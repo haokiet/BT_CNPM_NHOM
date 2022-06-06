@@ -34,10 +34,18 @@ namespace BTNhom3_CNPM.Controllers
             }
             return View(thamSo);
         }
+        string LayMaTS()
+        {
+            var maMax = db.ThamSoes.ToList().Select(n => n.MaTS).Max();
+            int maTS = int.Parse(maMax.Substring(2)) + 1;
+            string TS = String.Concat("00", maTS.ToString());
+            return "TS" + TS.Substring(maTS.ToString().Length - 1);
+        }
 
         // GET: ThamSoes/Create
         public ActionResult Create()
         {
+            ViewBag.MaTS = LayMaTS();
             return View();
         }
 
@@ -50,6 +58,7 @@ namespace BTNhom3_CNPM.Controllers
         {
             if (ModelState.IsValid)
             {
+                thamSo.MaTS = LayMaTS();
                 db.ThamSoes.Add(thamSo);
                 db.SaveChanges();
                 return RedirectToAction("Index");

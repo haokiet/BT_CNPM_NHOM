@@ -1,59 +1,137 @@
 ﻿@model IEnumerable<BTNhom3_CNPM.Models.ThamSo>
 
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/Layout_Admin.cshtml";
+    int i = 0;
+    string ttrang = "";
 }
 
 <!DOCTYPE html>
 
-<html>
+
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
+    <title>Danh Sách Sản Phẩm</title>
+    <style type="text/css">
+        .grid-footer {
+            color: #000;
+            font: 17px Calibri;
+            text-align: center;
+            font-weight: bold;
+        }
+
+            .grid-footer a {
+                background-color: #ffffff;
+                color: blue;
+                box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+                padding: 1px 10px 2px 10px;
+            }
+
+                .grid-footer a:active, a:hover {
+                    background-color: #ffffff;
+                    color: #FFAD33;
+                    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+                }
+
+        .alternatingRowStyle {
+            background-color: aliceblue;
+        }
+
+        table .table1 {
+            text-align: left;
+            margin-left: 0px;
+            margin-right: 0px;
+            width: 800px;
+        }
+
+        .tr, .td {
+            text-align: left;
+        }
+
+        #gridContent {
+            text-align: center;
+        }
+    </style>
 </head>
-<body>
-    <p>
-        @Html.ActionLink("Create New", "Create")
-    </p>
-    <table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.TenTS)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DonViTinh)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.GiaTri)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TinhTrang)
-            </th>
-            <th></th>
-        </tr>
-    
-    @foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.TenTS)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DonViTinh)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.GiaTri)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TinhTrang)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id=item.MaTS }) |
-                @Html.ActionLink("Details", "Details", new { id=item.MaTS }) |
-                @Html.ActionLink("Delete", "Delete", new { id=item.MaTS })
-            </td>
-        </tr>
-    }
-    
-    </table>
-</body>
-</html>
+<main id="main" class="main">
+    <div class="pagetitle">
+        <h1>Danh sách Tham Số</h1>
+    </div><!-- End Page Title -->
+    <section class="section">
+        <div class="row">
+            <div class="col-lg-12">
+
+                <div class="card">
+                    <div class="card-body">
+
+                        <table class="table">
+                            <tr>
+                                <th>
+                                    STT
+                                </th>
+                                <th>
+                                    Mã Tham Số
+                                </th>
+                                <th>
+                                    Tên Tham Số
+                                </th>
+                                <th>
+                                    GiaTri
+                                </th>
+                                <th>
+                                    Đơn Vị Tính
+                                </th>
+                                <th>
+                                    Tình Trạng
+                                </th>
+                                
+                                <th>Chức năng</th>
+                            </tr>
+
+                            @foreach (var item in Model)
+                            {
+                        <tr>
+                            <td>
+                                @{i++;}
+                                @i
+                            </td>
+                            <td>
+
+                                @Html.DisplayFor(modelItem => item.MaTS)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.TenTS)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.GiaTri)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DonViTinh)
+
+                            </td>
+                            <td>
+                                @{if (item.TinhTrang == true)
+                                    { ttrang = "Áp dụng"; }
+                                    else
+                                    { ttrang = "Không áp dụng"; }
+                                }
+                                @ttrang
+
+                            </td>
+                            <td>
+                                @Html.ActionLink("Sửa", "Edit", new { id = item.MaTS }) |
+                                @Html.ActionLink("Xóa", "Delete", new { id = item.MaTS })
+                            </td>
+                        </tr>
+                            }
+
+                        </table>
+                        <button>
+                            @Html.ActionLink("Thêm Mới", "Create")
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>

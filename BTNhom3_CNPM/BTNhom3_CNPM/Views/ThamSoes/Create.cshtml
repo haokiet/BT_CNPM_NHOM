@@ -2,76 +2,113 @@
 
 @{
     Layout = null;
+    Layout = "~/Views/Shared/Layout_Admin.cshtml";
 }
 
-<!DOCTYPE html>
+<main id="main" class="main">
+    <div class="pagetitle">
+        <h1>Thêm mới Tham Số</h1>
+    </div><!-- End Page Title -->
+    <section class="section">
+        <div class="row">
+            <div class="col-lg-12">
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Create</title>
-</head>
-<body>
-    @using (Html.BeginForm()) 
-    {
-        @Html.AntiForgeryToken()
-        
-        <div class="form-horizontal">
-            <h4>ThamSo</h4>
-            <hr />
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            <div class="form-group">
-                @Html.LabelFor(model => model.MaTS, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.MaTS, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.MaTS, "", new { @class = "text-danger" })
-                </div>
-            </div>
-    
-            <div class="form-group">
-                @Html.LabelFor(model => model.TenTS, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.TenTS, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.TenTS, "", new { @class = "text-danger" })
-                </div>
-            </div>
-    
-            <div class="form-group">
-                @Html.LabelFor(model => model.DonViTinh, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.DonViTinh, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.DonViTinh, "", new { @class = "text-danger" })
-                </div>
-            </div>
-    
-            <div class="form-group">
-                @Html.LabelFor(model => model.GiaTri, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.GiaTri, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.GiaTri, "", new { @class = "text-danger" })
-                </div>
-            </div>
-    
-            <div class="form-group">
-                @Html.LabelFor(model => model.TinhTrang, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    <div class="checkbox">
-                        @Html.EditorFor(model => model.TinhTrang)
-                        @Html.ValidationMessageFor(model => model.TinhTrang, "", new { @class = "text-danger" })
+                <div class="card">
+                    <div class="card-body">
+                        <div style="float:left;width:90%">
+                            @using (Html.BeginForm("Create", "ThamSoes", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                            {
+                                @Html.AntiForgeryToken()
+
+                                <div class="form-horizontal">
+                                    <hr />
+                                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                <table cellpadding="2" cellspacing="10" align="center">
+                                    <tr>
+                                        <td>
+                                            Mã Tham Số:
+                                        </td>
+                                        <td>
+                                            <div class="col-md-10">
+                                                <input type="text" value="@ViewBag.MaTS" disabled readonly class="form-control" />
+                                                @*@Html.EditorFor(model => model.MaTS,"@ViewBag.MaTS", new { htmlAttributes = new { @class = "form-control",disabled = "disabled", @readonly = "readonly" } })*@
+                                                @Html.ValidationMessageFor(model => model.MaTS, "", new { @class = "text-danger" })
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Tên Tham Số:</td>
+                                        <td>
+                                            <div class="col-md-10">
+                                                @Html.EditorFor(model => model.TenTS, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.TenTS, "", new { @class = "text-danger" })
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Giá Trị:</td>
+                                        <td>
+                                            <div class="col-md-10">
+                                                @Html.EditorFor(model => model.GiaTri, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.GiaTri, "", new { @class = "text-danger" })
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Đơn Vị Tính</td>
+                                        <td>
+                                            <div class="col-md-10">
+                                                @Html.EditorFor(model => model.DonViTinh, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.DonViTinh, "", new { @class = "text-danger" })
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Tình Trạng:</td>
+                                        <td>
+                                            <div class="col-md-20">
+                                                <div class="checkbox">
+                                                    Áp dụng @Html.RadioButtonFor(model => model.TinhTrang, "True", new { @checked = "checked" }) &nbsp;
+                                                    Không áp dụng @Html.RadioButtonFor(model => model.TinhTrang, "False")
+                                                    @Html.ValidationMessageFor(model => model.TinhTrang, "", new { @class = "text-danger" })
+                                                </div>
+
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>
+                                            <div class="form-group1">
+                                                <div class="col-md-offset-2 col-md-10">
+                                                    <input style="border:1px solid black;color:cornflowerblue" type="submit" value="Thêm mới" class="btn btn-default" />
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div>
+                                                <button>@Html.ActionLink("Hủy", "Create")</button>
+                                                <button>@Html.ActionLink("Quay lại", "Index")</button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+
+                                </div>
+
+                            }
+
+                        </div>
+                        <div>
+                            <
+                        </div>
+
+
                     </div>
                 </div>
             </div>
-    
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Create" class="btn btn-default" />
-                </div>
-            </div>
         </div>
-    }
-    
-    <div>
-        @Html.ActionLink("Back to List", "Index")
-    </div>
-</body>
-</html>
+    </section>
+</main>
