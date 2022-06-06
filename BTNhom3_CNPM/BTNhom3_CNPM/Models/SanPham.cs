@@ -11,6 +11,7 @@ namespace BTNhom3_CNPM.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel;
     
     public partial class SanPham
     {
@@ -23,6 +24,7 @@ namespace BTNhom3_CNPM.Models
         public string MaSP { get; set; }
         public string MaNCC { get; set; }
         public string MaLoai { get; set; }
+        [DisplayName("Tên S?n Ph?m")]
         public string TenSP { get; set; }
         public string MoTaSP { get; set; }
         public string AnhDaiDien { get; set; }
