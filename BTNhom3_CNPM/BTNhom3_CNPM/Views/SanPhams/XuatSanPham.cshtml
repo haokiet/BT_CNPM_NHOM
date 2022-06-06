@@ -37,6 +37,7 @@
                             <script>
                                 $(document).ready(function () {
                                     $('#example').DataTable({
+
                                         "language": {
                                             "lengthMenu": "Hiển thị _MENU_ dòng trên một trang",
                                             "zeroRecords": "Không tìm thấy",
@@ -57,41 +58,75 @@
                                                 rows: " (%d dòng được chọn)"
                                             }
                                         },
-                                        dom: 'Bfrtip',
+                                        dom: 'Blfrtip',
+                                        "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+
                                         buttons: [
                                             {
                                                 extend: 'print',
+                                                footer: true,
                                                 exportOptions: {
                                                     columns: ':visible'
                                                 }
                                             },
                                             {
                                                 extend: 'csvHtml5',
+                                                footer: true,
                                                 exportOptions: {
                                                     columns: ':visible'
                                                 }
                                             },
                                             {
                                                 extend: 'copyHtml5',
+                                                footer: true,
                                                 exportOptions: {
                                                     columns: ':visible'
                                                 }
                                             },
                                             {
                                                 extend: 'excelHtml5',
+                                                footer: true,
                                                 exportOptions: {
                                                     columns: ':visible'
                                                 }
                                             },
                                             {
                                                 extend: 'pdfHtml5',
+                                                footer: true,
                                                 exportOptions: {
                                                     columns: ':visible'
                                                 }
                                             },
                                             'colvis'
                                         ],
-                                        select: true
+                                        select: true,
+                                        footerCallback: function (row, data, start, end, display) {
+                                            var api = this.api();
+
+                                            // Remove the formatting to get integer data for summation
+                                            var intVal = function (i) {
+                                                return typeof i === 'string' ? i * 1 : typeof i === 'number' ? i : 0;
+                                            };
+
+                                            // Total over all pages
+                                            total = api
+                                                .column(5)
+                                                .data()
+                                                .reduce(function (a, b) {
+                                                    return intVal(a) + intVal(b);
+                                                }, 0);
+
+                                            // Total over this page
+                                            pageTotal = api
+                                                .column(5, { page: 'current' })
+                                                .data()
+                                                .reduce(function (a, b) {
+                                                    return intVal(a) + intVal(b);
+                                                }, 0);
+
+                                            // Update footer
+                                            $(api.column(5).footer()).html(pageTotal + ' VNĐ' + ' (Toàn bộ: ' + total + ' VNĐ)');
+                                        },
                                     });
                                 });
                             </script>
@@ -106,7 +141,7 @@
                                     <th>Tên loại</th>
                                     <th>Tên sản phẩm</th>
                                     <th>Mô tả sản phẩm</th>
-                                   
+
                                     <th>Đơn giá</th>
                                     <th>Đơn vị tính</th>
                                 </tr>
@@ -131,7 +166,7 @@
                                             @Html.DisplayFor(modelItem => item.MoTaSP)
                                         </td>
                                         <td>
-                                            @Html.DisplayFor(modelItem => item.DonGia)
+                                            @Html.DisplayFor(modelItem => item.DonGia).ToHtmlString()
                                         </td>
                                         <td>
                                             @Html.DisplayFor(modelItem => item.DonViTinh)
@@ -140,6 +175,13 @@
                                     </tr>
                                 }
                             </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th colspan="5" style="text-align:right">Tổng tiền ở trang hiện tại:</th>
+                                    <th></th>
+
+                                </tr>
+                            </tfoot>
 
                         </table>
                     </div>
