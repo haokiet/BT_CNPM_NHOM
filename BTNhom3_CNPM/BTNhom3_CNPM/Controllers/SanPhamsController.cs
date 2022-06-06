@@ -65,6 +65,7 @@ namespace BTNhom3_CNPM.Controllers
         // GET: SanPhams/Create
         public ActionResult Create()
         {
+            ViewBag.MaNV = LayMaSP();
             ViewBag.MaLoai = new SelectList(db.Loais, "MaLoai", "TenLoai");
             ViewBag.MaNCC = new SelectList(db.NCCs, "MaNCC", "TenNCC");
             return View();

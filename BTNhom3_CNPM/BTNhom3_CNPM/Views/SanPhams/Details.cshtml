@@ -1,82 +1,65 @@
 ﻿@model BTNhom3_CNPM.Models.SanPham
 
 @{
-    Layout = null;
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/Layout_Admin.cshtml";
 }
+<main id="main" class="main">
+    <div class="pagetitle">
+        <h1>Chi Tiết Sản Phẩm</h1>
+    </div><!-- End Page Title -->
+    <section class="section">
+        <div class="row">
+            <div class="col-lg-12">
 
-<!DOCTYPE html>
+                <div class="card">
+                    <div class="card-body">
+                        <table style="font-size:14px;margin-left:50px;">
+                            <tr>
+                                <td>
+                                    <table cellpadding="2" cellspacing="10">
+                                        <tr>
+                                            <td rowspan="8"><img src="/Images/@Html.DisplayFor(model => model.AnhDaiDien)" width="200" height="200" /></td>
+                                            <td>Mã Sản Phẩm:</td>
+                                            <td>@Html.DisplayFor(model => model.MaSP)</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Tên sản Phẩm:</td>
+                                            <td>@Html.DisplayFor(model => model.TenSP)</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Đơn Giá:</td>
+                                            <td>@Html.DisplayFor(model => model.DonGia)</td>
+                                        </tr>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Details</title>
-</head>
-<body>
-    <div>
-        <h4>SanPham</h4>
-        <hr />
-        <dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.TenSP)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.TenSP)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.MoTaSP)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.MoTaSP)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.AnhDaiDien)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.AnhDaiDien)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.DonGia)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.DonGia)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.DonViTinh)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.DonViTinh)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.Loai.TenLoai)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.Loai.TenLoai)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.NCC.TenNCC)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.NCC.TenNCC)
-            </dd>
-    
-        </dl>
-    </div>
-    <p>
-        @Html.ActionLink("Edit", "Edit", new { id = Model.MaSP }) |
-        @Html.ActionLink("Back to List", "Index")
-    </p>
-</body>
-</html>
+                                        <tr>
+                                            <td>Đơn Vị Tính:</td>
+                                            <td>@Html.DisplayFor(model => model.DonViTinh)</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Mô Tả:</td>
+                                            <td>@Html.DisplayFor(model => model.MoTaSP)</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Nhà Cung Cấp:</td>
+                                            <td>@Html.DisplayFor(model => model.NCC.TenNCC)</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Loại:</td>
+                                            <td>@Html.DisplayFor(model => model.Loai.TenLoai)</td>
+                                        </tr>
+
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                        <p style="margin-left:50px;">
+                            <button>@Html.ActionLink("Cập nhật", "Edit", new { id = Model.MaSP }) |</button>
+                            <button>@Html.ActionLink("Quay lại", "Index")</button>
+                        </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
