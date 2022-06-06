@@ -156,6 +156,9 @@ VALUES	(15000, 15, 'HD001', 'SP01'),
 		(9000, 10, 'HD004', 'SP04'),
 		(3000, 10, 'HD005', 'SP05')
 GO
+INSERT INTO dbo.ThamSo
+values ('TS001',N'Giá bán lớn hơn 0',N'VND',0,1)
+Go
 
 CREATE PROCEDURE SANPHAM_TimKiem
     @Masp varchar(10)=NULL,
