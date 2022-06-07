@@ -39,7 +39,7 @@
 
                             <script>
                                 var minDate, maxDate;
-                                var sum = 0;
+                                
                                 $.fn.dataTable.ext.search.push(
                                     function (settings, data, dataIndex) {
                                         var min = minDate.val();
@@ -144,50 +144,13 @@
                                             'colvis'
                                         ],
                                         dom: 'Blfrtip',
-                                        footerCallback: function (row, data, start, end, display) {
-                                            var api = this.api(), data;
-
-                                            // Remove the formatting to get integer data for summation
-                                            var intVal = function (i) {
-                                                return typeof i === 'string' ? i * 1 : typeof i === 'number' ? i : 0;
-                                            };
-
-                                            // Total over all pages
-                                            total = api
-                                                .column(8)
-                                                .data()
-                                                .reduce(function (a, b) {
-                                                    return intVal(a) + intVal(b);
-                                                }, 0);
-
-                                            // Total over this page
-                                            pageTotal = api
-                                                .column(8, { page: 'current' })
-                                                .data()
-                                                .reduce(function (a, b) {
-                                                    return intVal(a) + intVal(b);
-                                                }, 0);
-
-                                            // Update footer
-                                            $(api.column(8).footer()).html(pageTotal + ' tr VNĐ' + ' (Toàn bộ: ' + total + ' tr VNĐ)');
-                                        },
+                                        
                                     });
 
                                     $('#min, #max').on('change', function () {
                                         table.draw();
                                     });
-                                    $("#example tbody").on("click", "tr", function () {
-                                        var price = parseInt(
-                                            $(this).find("td").eq(8).html()
-                                        );
-                                        if ($(this).hasClass("selected")) {
-                                            sum -= price;
-                                        } else {
-                                            sum += price;
-                                        }
-                                        $(".sum").html(sum + " tr VNĐ");
-                                        $(this).toggleClass("selected");
-                                    });
+                                    
                                 });
                             </script>
 
@@ -255,14 +218,7 @@
                                     </tr>
                                 }
                             </tbody>
-                            <tfoot>
-                                <tr>
-                                    <th>Tổng tiền chọn:</th>
-                                    <th class="sum">??? tr VNĐ</th>
-                                    <th colspan="6" style="text-align:right">Tổng tiền ở trang hiện tại:</th>
-                                    <th></th>
-                                </tr>
-                            </tfoot>
+                           
 
                         </table>
                     </div>

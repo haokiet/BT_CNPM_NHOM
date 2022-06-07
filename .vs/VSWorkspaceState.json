@@ -1,7 +1,11 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\BTNhom3_CNPM",
+    "\\BTNhom3_CNPM\\BTNhom3_CNPM",
+    "\\BTNhom3_CNPM\\BTNhom3_CNPM\\Views",
+    "\\BTNhom3_CNPM\\BTNhom3_CNPM\\Views\\HoaDons"
   ],
-  "SelectedNode": "\\BTNhom3_CNPM.sln",
+  "SelectedNode": "\\BTNhom3_CNPM\\BTNhom3_CNPM\\Views\\HoaDons\\XuatHoaDon.cshtml",
   "PreviewInSolutionExplorer": false
 }
