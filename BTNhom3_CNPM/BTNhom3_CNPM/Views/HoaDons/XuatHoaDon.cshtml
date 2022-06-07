@@ -39,7 +39,7 @@
 
                             <script>
                                 var minDate, maxDate;
-
+                                var sum = 0;
                                 $.fn.dataTable.ext.search.push(
                                     function (settings, data, dataIndex) {
                                         var min = minDate.val();
@@ -84,7 +84,7 @@
 
                                     var table = $('#example').DataTable({
                                         "language": {
-                                            "lengthMenu": "Hiển thị _MENU_ dòng trên một trang",
+                                            "lengthMenu": " _MENU_ ",
                                             "zeroRecords": "Không tìm thấy",
                                             "info": "Hiển thị trang _PAGE_ / _PAGES_",
                                             "infoEmpty": "Không có dữ liệu",
@@ -144,9 +144,8 @@
                                             'colvis'
                                         ],
                                         dom: 'Blfrtip',
-                                        select: true,
                                         footerCallback: function (row, data, start, end, display) {
-                                            var api = this.api();
+                                            var api = this.api(), data;
 
                                             // Remove the formatting to get integer data for summation
                                             var intVal = function (i) {
@@ -176,6 +175,18 @@
 
                                     $('#min, #max').on('change', function () {
                                         table.draw();
+                                    });
+                                    $("#example tbody").on("click", "tr", function () {
+                                        var price = parseInt(
+                                            $(this).find("td").eq(8).html()
+                                        );
+                                        if ($(this).hasClass("selected")) {
+                                            sum -= price;
+                                        } else {
+                                            sum += price;
+                                        }
+                                        $(".sum").html(sum + " tr VNĐ");
+                                        $(this).toggleClass("selected");
                                     });
                                 });
                             </script>
@@ -246,7 +257,9 @@
                             </tbody>
                             <tfoot>
                                 <tr>
-                                    <th colspan="8" style="text-align:right">Tổng tiền ở trang hiện tại:</th>
+                                    <th>Tổng tiền chọn:</th>
+                                    <th class="sum">??? tr VNĐ</th>
+                                    <th colspan="6" style="text-align:right">Tổng tiền ở trang hiện tại:</th>
                                     <th></th>
                                 </tr>
                             </tfoot>
